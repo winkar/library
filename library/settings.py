@@ -24,6 +24,10 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+TEMPLATE_DIRS = (
+    '/home/winkar/workspace/library/library/templates',
+)
+
 ALLOWED_HOSTS = []
 
 
