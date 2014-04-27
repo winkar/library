@@ -40,7 +40,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'library',
 )
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -68,7 +70,7 @@ DATABASES = {
  		'ENGINE' : 'django.db.backends.mysql',
  		'NAME' : 'library',
  		'USER' : 'root',
- 		'PASSWORD' : 'root',
+ 		'PASSWORD' : 'passw0rd',
  		'HOST' : '',
  	}
 }
@@ -78,7 +80,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -91,3 +93,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = "./static/"

@@ -5,9 +5,12 @@
   {% if form.errors %}
     <p class="error">Sorry, that's not a valid username or password</p>
   {% endif %}
+	
+	
 
   <form action="" method="post">
     <label for="username">User name:</label>
+    {% csrf_token %}
     <input type="text" name="username" value="" id="username">
     <label for="password">Password:</label>
     <input type="password" name="password" value="" id="password">
@@ -15,5 +18,9 @@
     <input type="submit" value="login" />
     <input type="hidden" name="next" value="{{ next|escape }}" />
   </form>
+  
+  <a href="/accounts/register">
+  	<button type="button">注册</button>
+  </a>
 
 {% endblock %}

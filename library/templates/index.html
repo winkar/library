@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}the Main Site {% endblock %}
+
+{% block content %}
+  <div>
+    <label>图书检索</label><input type="text"></input>
+  </div>
+
+  </br>
+
+  <div>
+    <span>
+      你好 {{ user.username }}
+    </span>
+    <button>借阅查询</button>
+    <div class="ui inverted blue segment"> 借阅查询</div>
+  </div>
+{% endblock %}
