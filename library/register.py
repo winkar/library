@@ -2,12 +2,10 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
-from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import RequestContext
 
 
 
-#@csrf_protect
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)

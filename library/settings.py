@@ -40,7 +40,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'library',
+    'library.library',
 )
 
 
@@ -51,6 +51,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+#    'django.middleware.locale.LocaleMiddleware',
 )
 
 ROOT_URLCONF = 'library.urls'
@@ -94,3 +95,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = "./static/"
+MEDIA_ROOT = './media/'
+MEDIA_URL = '/media/'

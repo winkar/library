@@ -1,10 +1,12 @@
-subl{% extends "base.html" %}
+{% extends "base.html" %}
 
-{% block title %}the Main Site {% endblock %}
+{% block title %}search books{% endblock %}
 
+{% block content%}
+  <div class="ui inverted teal segment" align="center">
+    图书搜索
+  </div>
 
-
-{% block content %}
   <script>
     var byAuthor = false;
     function byAuthorChange(){
@@ -19,6 +21,7 @@ subl{% extends "base.html" %}
         byPublisher= !byPublisher
       };
   </script>
+
   <div class="ui action fluid input">
       <input type="text" placeholder="Search..." id = "search_info">
       <div class="ui button" id="search_button">图书检索</div>
@@ -39,12 +42,23 @@ subl{% extends "base.html" %}
 
   </br>
   </br>
-  <div>
-    <span>
-      你好 {{ user.first_name }}
-    </span>
-    <button>借阅查询</button>
-    <div class="ui inverted blue segment"> 借阅查询</div>
+
+	<div class="ui inverted blue segment">
+		<h2>Search Result</h2>
+	</div>
+
+  <div class="ui list">
+  {% for book in books %}
+    <div class="item">
+      <div class="ui list">Title:{{book.title}}
+	     	<div class="item"> authors:
+	     		{% for author in book.authors %}	
+	        		<span>	{{author.first_name}} {{author.last_name}} </span>
+	      		{% endfor %}
+	     	<div class="item">publisher:{{book.publisher.name}}</div>
+      </div>
+    </div>
+  {% endfor %}
   </div>
 
   <script>
@@ -56,6 +70,5 @@ subl{% extends "base.html" %}
     })
   })
   </script>
+
 {% endblock %}
-
-
