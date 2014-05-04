@@ -1,10 +1,14 @@
-subl{% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block title %}the Main Site {% endblock %}
 
 
 
 {% block content %}
+
+  <div class="ui inverted teal segment">
+    <h1>欢迎来到复旦大学图书馆</h1>
+  </div>
   <script>
     var byAuthor = false;
     function byAuthorChange(){
@@ -39,12 +43,19 @@ subl{% extends "base.html" %}
 
   </br>
   </br>
+  </br>
+  </br>
+
   <div>
-    <span>
-      你好 {{ user.first_name }}
-    </span>
-    <button>借阅查询</button>
-    <div class="ui inverted blue segment"> 借阅查询</div>
+  <img class="ui fluid image" src="media/news.jpg"> 
+  </div>
+  </br>
+  </br>
+  <div class="ui center aligned basic segment">
+    <h2>你好 {{ user.first_name }} </h2>
+    <div class="ui inverted green button" id="query">
+      点此查看自己借阅的图书
+    </div>
   </div>
 
   <script>
@@ -53,6 +64,12 @@ subl{% extends "base.html" %}
       var info = $("#search_info").val();
       var urlstr = "/search?"+"info="+info+"&byAuthor="+byAuthor+"&byTitle="+byTitle+"&byPublisher="+byPublisher;
       location.href = urlstr
+    })
+  })
+
+  $(document).ready(function (){
+    $("#query").click(function(){
+      location.href = "/query"
     })
   })
   </script>

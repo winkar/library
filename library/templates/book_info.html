@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}图书信息{% endblock %}
+	
+{% block content%}
+	<div class="ui inverted teal segment" align="center">
+    	图书信息
+  	</div>
+
+  	<div class="ui list">
+	  	<div class="item">
+		  	<div class="two column ui grid">
+
+		  		<div class="column">
+		  			<img class="ui image" src="{{book.imageurl}}"> 
+		  		</div>
+
+		  		<div class="column">
+		  			
+		      		<div class="ui list">书名 : {{book.title}}
+				     	<div class="item"> 作者 : 
+				     		{% for author in book.authors %}	
+				        		<span>	{{author.first_name}} {{author.last_name}} </span>
+				      		{% endfor %}
+				      	</div>
+				     	<div class="item">出版社 : {{book.publisher.name}}</div>
+				     	<div class="item">出版日期 : {{book.publication_date}}</div>
+				     	<div class="item">借阅情况 : {{book.borrowed}}</div>
+			     	</div>
+
+
+
+			     	{% if book.inhand %}
+				     	<div class="ui inverted blue button" id="return_book">还书</div>
+				     	<script type="text/javascript">
+				     		$("#return_book").click(function(){
+				     			location.href="/return_book?bookId="+{{book.id}}
+				     		})
+				     	</script>
+			 	    {% else %}
+			     		<div class="ui inverted blue button" id="borrow">借阅</div>
+			     		<script type="text/javascript">
+				     		$("#borrow").click(function(){
+				     			location.href="/borrow?bookId="+{{book.id}}
+				     		})
+				     	</script>
+			     	{% endif %}
+
+		      	</div>
+
+		    </div>
+	  	</div>
+  	</div>
+
+{% endblock %}

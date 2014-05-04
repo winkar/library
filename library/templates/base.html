@@ -1,16 +1,51 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html lang="en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" >
+<html lang="zh-cn">
 <head>
+	<meta charset="utf-8">
     <link href= "{{STATIC_URL}}semantic/css/semantic.css" rel="stylesheet"/>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"> </script>
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <div class="ui  segment"><h1>Fudan University Library</h1></div>
+    <img class="ui image" src="/media/logo.jpg">
+
+    <div class="ui buttons">
+              <div class="ui button" id="index_page">首页</div>
+              <script type="text/javascript">
+                $("#index_page").click(function(){
+                                location.href="/"
+                })
+              </script>
+              <div class="ui button" id="query_page">我的图书馆</div>
+              <script type="text/javascript">
+                 $("#query_page").click(function(){
+                                location.href="/query"
+                })
+              </script>
+              <div class="ui button" id="search_page">图书检索</div>
+              <script type="text/javascript">
+                 $("#search_page").click(function(){
+                                location.href="/search"
+                })
+              </script>
+    </div>        
+
+    <div class="right floated ui  circular button" id="logout">
+        <i class="off icon"></i>
+    </div>
+
+    <script type="text/javascript">
+                 $("#logout").click(function(){
+                                location.href="/accounts/logout?next=/accounts/login?next=/"
+                })
+    </script>
+
+
+    </div>
     {% block content %}{% endblock %}
     {% block footer %}
     <hr>
-    <div class="ui segment">Welcome to visit Fudan University Library</div>
+    <div class="ui basic segment">Welcome to visit Fudan University Library</div>
     {% endblock %}
 </body>
 </html>

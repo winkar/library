@@ -17,3 +17,4 @@ def register(request):
     return render_to_response("register.html", {
         'form': form},context_instance=RequestContext(request)
     )
+

@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}借阅查询{% endblock %}
+
+{% block content %}
+
+	<div class="ui inverted teal segment" align="center">
+    	借阅查询
+  	</div>
+
+  	<div class="ui inverted blue segment">
+		<h2>你好 {{ user.first_name }} ,以下是您的借阅情况</h2>
+	</div>
+
+	 <div class="ui list">
+  	{% for book in books %}
+
+	  	<div class="item">
+		  	<div class="two column ui grid">
+
+		  		<div class="column">
+		  			<img class="ui image" src="{{book.imageurl}}"> 
+		  		</div>
+
+		  		<div class="column">
+		  			
+		      		<div class="ui list" id="{{book.id}}">
+						<a href="/book_info?bookId={{book.id}}">
+		      				书名 : {{book.title}}
+		      			</a>
+	  			     	<div class="item"> 作者 : 
+	  			     		{% for author in book.authors %}	
+	  			        		<span>	{{author.first_name}} {{author.last_name}} </span>
+	  			      		{% endfor %}
+	  			      	</div>
+	  			     	<div class="item">出版社 : {{book.publisher.name}}</div>
+	  			     	<div class="item">出版日期 : {{book.publication_date}}</div>
+	  			     </div>
+		      	</div>
+
+		    </div>
+	  	</div>
+  	{% endfor %}
+  	</div>
+
+{% endblock%}

@@ -1,6 +1,8 @@
 from django.db import models
 import datetime
 from PIL import Image
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Publisher(models.Model):
@@ -32,3 +34,24 @@ class Book(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def save(self):
+        if not self.image:
+            return
+        super(Book, self).save()
+        image = Image.open(self.image.path)
+        (width,height) = image.size
+
+        th =120.0 
+        if width > th:
+            ratio = th /width
+
+        size = ( int(width * ratio), int(height * ratio) )
+        image = image.resize(size, Image.ANTIALIAS)
+        image.save(self.image.path)
+
+class Borrow(models.Model):
+    book = models.ForeignKey(Book)
+    user = models.ForeignKey(User)  
+    borrow_date = models.DateField(blank=True, null=True,default=datetime.datetime.now().date())
+    return_date = models.DateField(blank=True, null=True)

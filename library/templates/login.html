@@ -6,8 +6,9 @@
     <p class="error">Sorry, that's not a valid username or password</p>
   {% endif %}
 	
-	
-
+	</br>
+  </br>
+  
   <form action="" method="post">
     <label for="username">User name:</label>
     {% csrf_token %}
@@ -19,8 +20,9 @@
     <input type="hidden" name="next" value="{{ next|escape }}" />
   </form>
   
+  </br>
   <a href="/accounts/register">
-  	<button type="button">注册</button>
+  	<div class="ui button" >注册</div>
   </a>
 
 {% endblock %}
