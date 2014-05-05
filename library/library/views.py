@@ -74,6 +74,7 @@ def inhand(book, user):
     return None
 
 
+
 @login_required
 def book_info(request):
     bookId = request.REQUEST.get('bookId')
